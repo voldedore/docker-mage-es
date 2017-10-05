@@ -5,7 +5,7 @@ RUN apt-get update; \
 
 COPY scripts/install /var/es/install
 
-RUN chmod u+x /var/es/install/install-es.sh; \
-  /var/es/install/install-es.sh mkg_es localhost:9200
+RUN chmod u+x /var/es/install/install-es.sh; sync; \
+  bash /var/es/install/install-es.sh mkg_es localhost:9200
 
 EXPOSE 9200

@@ -1,11 +1,13 @@
 FROM ubuntu:14.04
 
-RUN apt-get update; \
-  apt-get install -y wget;
+RUN apt-get update;
 
-COPY scripts/install /var/es/install
+COPY install/bin /etc/elasticsearch/bin
+COPY install/config /etc/elasticsearch/config
+COPY install/lib /etc/elasticsearch/lib
 
-RUN chmod u+x /var/es/install/install-es.sh; sync; \
-  bash /var/es/install/install-es.sh mkg_es localhost:9200
+WORKDIR /etc/elasticsearch/
+
+CMD tail -f /dev/null
 
 EXPOSE 9200

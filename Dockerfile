@@ -1,12 +1,16 @@
 FROM ubuntu:14.04
 
-RUN apt-get update;
+# TAG 1.5
 
-COPY install/bin /etc/elasticsearch/bin
-COPY install/config /etc/elasticsearch/config
-COPY install/lib /etc/elasticsearch/lib
+RUN apt-get update; \
+  apt-get install -y wget curl software-properties-common; \
+  add-apt-repository ppa:openjdk-r/ppa; \
+  apt-get update; \
+  apt-get install -y openjdk-8-jdk; \
+  update-alternatives --config java; \
+  update-alternatives --config javac;
 
-WORKDIR /etc/elasticsearch/
+COPY install /var/es/install
 
 CMD tail -f /dev/null
 

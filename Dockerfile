@@ -26,9 +26,10 @@ RUN apt-get update; \
 
 # Install plugins for ES module for Magento to work
 RUN /usr/share/elasticsearch/bin/plugin -i mobz/elasticsearch-head; \
-  /usr/share/elasticsearch/bin/plugin -i lmenezes/elasticsearch-kopf/master; \
+  /usr/share/elasticsearch/bin/plugin -i lmenezes/elasticsearch-kopf/v1.6.1; \
   /usr/share/elasticsearch/bin/plugin -i elasticsearch/elasticsearch-analysis-icu/2.5.0; \
-  /usr/share/elasticsearch/bin/plugin -i elasticsearch/elasticsearch-analysis-phonetic/2.5.0;
+  /usr/share/elasticsearch/bin/plugin -i elasticsearch/elasticsearch-analysis-phonetic/2.5.0; \
+  /usr/share/elasticsearch/bin/plugin -i elasticsearch/elasticsearch-analysis-smartcn/2.5.0;
 
 # Auto run when system is on
 RUN update-rc.d elasticsearch defaults
